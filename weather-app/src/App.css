@@ -1,0 +1,33 @@
+.ContainerWeather{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.HeaderWeather{
+  font-size: 40px;
+  font-style: italic;
+}
+.SearchSection {
+  position: relative; 
+  width: 100%;
+}
+.SearchSection img {
+  width: 100%;
+  height: 400px;
+}
+
+.SearchInput {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
+
+.SearchInput input {
+  width: 200px;
+  padding: 10px 100px;
+  text-align: center; 
+}
+
