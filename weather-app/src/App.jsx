@@ -1,23 +1,50 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
+import CloudQueueIcon from '@mui/icons-material/CloudQueue';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import Brightness5OutlinedIcon from '@mui/icons-material/Brightness5Outlined';
 
 
 function App() {
   const [city, setCity] = useState(null);
   const [search, setSearch] = useState('');
+  const [desc, setdesc] = useState([]);
+
   const key = "6e24c0a50c84dafa8864b3faccf5f620";
   useEffect(() => {
     const getApi = async () => {
       try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${key}&units=metric`);
+        console.log(response.data);
         setCity(response.data);
+        setdesc(response.data.weather);
+        console.log(desc[0].main);
       } catch (error) {
         console.log(error);
       }
     };
     getApi();
+
+    
+
   }, [search]);
+
+  function WeatherIcon(desc){
+    
+    if(desc[0]?.main === 'Clouds'){
+    return <CloudQueueIcon/>
+   }
+   else if(desc[0]?.main === 'Rain'){
+   return <WaterDropIcon/>
+   }
+   else if(desc[0]?.main === 'Clear'){
+     return <Brightness5OutlinedIcon/>
+     }
+   else
+   {return "";}
+
+   }
 
   return (
     <>
@@ -32,8 +59,9 @@ function App() {
         </div>
       </div>
       <div className='Results'>
-      {city && <p>{city.main.temp}</p>}
-        {city && <p>{city.name}</p>}
+      {search!= ""  ? <p>{city?.main.temp}</p> : ""}
+      {search!= "" ? <p>{desc[0]?.main}</p> : ""}      
+      {search!= "" ? <p>{WeatherIcon(desc)} </p> : ""}      
       </div>
       </div>
 
