@@ -4,6 +4,7 @@ import './App.css';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import Brightness5OutlinedIcon from '@mui/icons-material/Brightness5Outlined';
+import Footer from '../src/components/Footer.jsx'
 
 
 function App() {
@@ -59,14 +60,17 @@ function App() {
         </div>
       </div>
       <div className='Results'>
-      {search!= ""  ? <p>{city?.main.temp}</p> : ""}
-      {search!= "" ? <p>{desc[0]?.main}</p> : ""}      
-      {search!= "" ? <p>{WeatherIcon(desc)} </p> : ""}      
+      {search!= ""  ? <p>Temperature: {city?.main.temp}°C</p> : ""}
+      {search!= "" ? <p>{desc[0]?.main} {WeatherIcon(desc)}</p> : ""}        
+      {search!= "" ? <p>Min: {city?.main.temp_min} </p> : ""}    
+      {search!= "" ? <p>Max: {city?.main.temp_max} </p> : ""}  
+      {search!= "" ? <p>Feels Like: {city?.main.feels_like} </p> : ""}    
       </div>
       </div>
-
+      <Footer/>
     </>
-  );
+
+);
 }
 
 export default App;

@@ -1,0 +1,10 @@
+.FooterContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 10px;
+    background-color:rgb(76, 177, 244) ;
+    color: aliceblue;
+    margin-top: 100px;
+
+}

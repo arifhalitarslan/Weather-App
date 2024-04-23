@@ -31,3 +31,7 @@
   text-align: center; 
 }
 
+.TempAndIcon{
+  display: flex;
+  justify-content: center;
+}
